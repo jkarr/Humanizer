@@ -60,6 +60,37 @@ namespace Humanizer.Tests
             Assert.Equal(singular, singular.Singularize(false));
             Assert.Equal(singular, plural.Singularize(false));
         }
+        [Theory]
+        [ClassData(typeof(PluralTestSource))]
+        public void IsPlural(string singular, string plural)
+        {
+            if (singular.Equals(plural))
+            {
+                Assert.True(plural.IsPlural());
+                Assert.True(singular.IsPlural());
+            }
+            else
+            {
+                Assert.True(plural.IsPlural());
+                Assert.False(singular.IsPlural());
+            }
+        }
+
+        [Theory]
+        [ClassData(typeof(PluralTestSource))]
+        public void IsSingular(string singular, string plural)
+        {
+            if (singular.Equals(plural))
+            {
+                Assert.True(singular.IsSingular());
+                Assert.True(plural.IsSingular());
+            }
+            else
+            {
+                Assert.True(singular.IsSingular());
+                Assert.False(plural.IsSingular());
+            }
+        }
 
         //Uppercases individual words and removes some characters 
         [Theory]

@@ -54,6 +54,30 @@ namespace Humanizer
         }
 
         /// <summary>
+        /// Determines if a given word is plural
+        /// </summary>
+        /// <param name="word">The word to consider</param>
+        /// <returns>True if the word is plural.  False otherwise.</returns>
+        public static bool IsPlural(this string word)
+        {
+            var pluralized = word.Pluralize(false);
+
+            return pluralized.Equals(word);
+        }
+
+        /// <summary>
+        /// Determines if a given word is singular
+        /// </summary>
+        /// <param name="word">The word to consider</param>
+        /// <returns>True if the word is singular.  False otherwise.</returns>
+        public static bool IsSingular(this string word)
+        {
+            var singular = word.Singularize(false);
+
+            return singular.Equals(word);
+        }
+
+        /// <summary>
         /// Humanizes the input with Title casing
         /// </summary>
         /// <param name="input">The string to be titleized</param>
